@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "nbdev_cards_q",
+    "section": "",
+    "text": "A deck of cards demo of nbdev based on idea fromThink Python 2nd Edition by Allen B. Downey.\nThis file will become your README and also the index of your documentation.",
+    "crumbs": [
+      "nbdev_cards_q"
+    ]
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "nbdev_cards_q",
+    "section": "Developer Guide",
+    "text": "Developer Guide\nIf you are new to using nbdev here are some useful pointers to get you started.\n\nInstall nbdev_cards_q in Development mode\n# make sure nbdev_cards_q package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to nbdev_cards_q\n$ nbdev_prepare",
+    "crumbs": [
+      "nbdev_cards_q"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "nbdev_cards_q",
+    "section": "Usage",
+    "text": "Usage\n\nInstallation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/QinJiojio/nbdev_cards_q.git\nor from conda\n$ conda install -c QinJiojio nbdev_cards_q\nor from pypi\n$ pip install nbdev_cards_q\n\n\nDocumentation\nDocumentation can be found hosted on this GitHub repository’s pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.",
+    "crumbs": [
+      "nbdev_cards_q"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "nbdev_cards_q",
+    "section": "How to use",
+    "text": "How to use\nThis lib provides a ‘card’ class you can use to creat, display, and compare playing cards:\n\nCard(1,3)\n\n3♦\n\n\n\nsuits\n\n['♣', '♦', '♥', '♠']",
+    "crumbs": [
+      "nbdev_cards_q"
+    ]
+  },
+  {
+    "objectID": "card.html",
+    "href": "card.html",
+    "title": "card – A basic playing card",
+    "section": "",
+    "text": "We will be using numbers to represent playing card clubs and ranks. There are the ranks:\nFor instance the suit at index ‘0’:\nsuits[0]\n\n'♣'\nThese are the ranks:\nranks\n\n[None, 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']\nFor instance the rank at index ‘1’ (note that there isn’t a playing card at position ‘0’, since we want the ranks to match the indicies where possible):\nranks[1]\n\n'A'\nsource",
+    "crumbs": [
+      "card -- A basic playing card"
+    ]
+  },
+  {
+    "objectID": "card.html#comparison-operators",
+    "href": "card.html#comparison-operators",
+    "title": "card – A basic playing card",
+    "section": "Comparison operators",
+    "text": "Comparison operators\nEquality, less than, and greater than work on the rank and suit indices:\n\nsource\n\nCard.__gt__\n\n Card.__gt__ (a:__main__.Card)\n\nReturn self&gt;value.\n\nsource\n\n\nCard.__lt__\n\n Card.__lt__ (a:__main__.Card)\n\nReturn self&lt;value.\n\nsource\n\n\nCard.__eq__\n\n Card.__eq__ (a:__main__.Card)\n\nReturn self==value.\nFor instance, here’s some tests of equality…\n\ntest_eq(Card(suit=1,rank=3), Card(suit=1, rank=3))\n\n…and a test of &lt;…\n\nassert Card(suit=1,rank=3)&lt;Card(suit=2, rank=3)\n\n…and finally of &gt;:\n\nassert Card(suit=1,rank=3)&lt;Card(suit=2, rank=3)\nassert not Card(suit=1,rank=3)&gt;Card(suit=2,rank=3)",
+    "crumbs": [
+      "card -- A basic playing card"
+    ]
+  },
+  {
+    "objectID": "deck.html",
+    "href": "deck.html",
+    "title": "deck",
+    "section": "",
+    "text": "from nbdev.showdoc import *\n\n\nsource\n\nDeck\n\n Deck ()\n\nInitialize self. See help(type(self)) for accurate signature.\n\ndeck = Deck()\nc = Card(2,3)\nprint(c)\nprint(c in deck)\n\n3♥\nTrue\n\n\n\ntest_eq(Card(suit=1,rank=3), Card(suit=1, rank=3))\n\nWhen we initially create a deck, all of the cards will be present:\n\ndeck = Deck()\ndeck\n\nA♣;2♣;3♣;4♣;5♣;6♣;7♣;8♣;9♣;10♣;J♣;Q♣;K♣;A♦;2♦;3♦;4♦;5♦;6♦;7♦;8♦;9♦;10♦;J♦;Q♦;K♦;A♥;2♥;3♥;4♥;5♥;6♥;7♥;8♥;9♥;10♥;J♥;Q♥;K♥;A♠;2♠;3♠;4♠;5♠;6♠;7♠;8♠;9♠;10♠;J♠;Q♠;K♠\n\n\nThat should be 52 cards:\n\ntest_eq(len(deck),52)\n\nAs a reminder, these are the suits we defined for a Card:\n\nsuits\n\n['♣', '♦', '♥', '♠']\n\n\nWe can check if. say, the Ace of Clubs is in the deck:\n\nCard(1,1) in deck\n\nTrue\n\n\n\nsource\n\n\nDeck.pop\n\n Deck.pop (idx:int=-1)\n\nRemove one card from the deck\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nidx\nint\n-1\nThe index of the card to remove, defaulting to the last one\n\n\n\n\ndeck = Deck()\ntest_eq(deck.pop(),Card(3,13)) # K♠\n\nThere are 51 cards left in the deck now.\n\ntest_eq(len(deck),51)\n\n\nsource\n\n\nDeck.remove\n\n Deck.remove (card:nbdev_cards_q.card.Card)\n\nRemoves ‘card’ from the deck or raises exception if it is not there\n\n\n\n\nType\nDetails\n\n\n\n\ncard\nCard\nCard to remove\n\n\n\n\nsource\n\n\nDeck.shuffle\n\n Deck.shuffle ()\n\nshuffles the cards in this deck\n\ndef draw_n(n:int, # number of cards to draw\n           replace:bool=True): # whether or not draw with replacement\n    \"Draw `n` cards, with replacement if `replace`\"\n    d = Deck()\n    d.shuffle()\n    if replace: return [d.cards[random.choice(range(len(d.cards)))] for _ in range(n)]\n    else: return d.cards[:n]\n\n\ndraw_n(13,replace=False)\n\n[3♥, 2♦, J♣, A♣, K♦, 9♣, Q♣, 7♦, 3♣, Q♦, 8♣, 5♣, 3♦]",
+    "crumbs": [
+      "deck"
+    ]
+  }
+]
