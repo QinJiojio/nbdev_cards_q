@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "nbdev-cards-q"
+  site-url: "https://QinJiojio.github.io/nbdev_cards_q"
+  description: "A sample of how to create a deck of cards lib using nbdev"
+  repo-branch: main
+  repo-url: "https://github.com/QinJiojio/nbdev_cards_q"
